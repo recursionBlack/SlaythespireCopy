@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c4q5omr3emryk"]
+
+[ext_resource type="Theme" uid="uid://cjp54jdhh8u1n" path="res://main_theme.tres" id="1_jddoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jddoc"]
+size = Vector2(25, 30)
+
+[node name="CardUI" type="Control" unique_id=944671324]
+custom_minimum_size = Vector2(25, 30)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -231.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jddoc")
+
+[node name="Color" type="ColorRect" parent="." unique_id=407590358]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.28235295, 0.1764706, 1)
+
+[node name="State" type="Label" parent="." unique_id=1106805358]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "state"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DropPointDetector" type="Area2D" parent="." unique_id=844779049]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector" unique_id=1214059944]
+position = Vector2(12.5, 15)
+shape = SubResource("RectangleShape2D_jddoc")
