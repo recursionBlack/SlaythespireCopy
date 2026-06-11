@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c6fl81ab5vfs6"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_p7aow"]
-[ext_resource type="PackedScene" uid="uid://c4q5omr3emryk" path="res://scene/ccard_ui/card_ui.tscn" id="2_6en87"]
+[ext_resource type="PackedScene" uid="uid://c4q5omr3emryk" path="res://scene/card_ui/card_ui.tscn" id="2_6en87"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7aow"]
 size = Vector2(256, 100)
@@ -22,7 +22,7 @@ collision_layer = 2
 position = Vector2(128, 50)
 shape = SubResource("RectangleShape2D_p7aow")
 
-[node name="BattleUI" type="CanvasLayer" parent="." unique_id=828457975]
+[node name="BattleUI" type="CanvasLayer" parent="." unique_id=828457975 groups=["ui_layer"]]
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI" unique_id=1967309738]
 anchors_preset = 7
