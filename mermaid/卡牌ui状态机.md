@@ -4,11 +4,15 @@ stateDiagram-v2
     clicked : clicked
     dragging : dragging
     released : released
+    aiming : aiming
 
-    base --> clicked : LeftMouseButton
+    base --> clicked : LMB
     clicked --> dragging : mouse motion
-    dragging --> released : LeftMouseButton pressed or released
+    dragging --> released : LMB pressed or released
     released --> base : is outside drop area
-    dragging --> base : RightMouseButton
+    dragging --> base : RMB
+    dragging --> aiming : single_targeted and mouse motion and is inside drop area
+    aiming --> released : LMB pressed or released
+    aiming --> base : RMB or at bottom
 ```
 
