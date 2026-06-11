@@ -1,5 +1,8 @@
 extends CardState
 
+const DRAG_MINIMUM_THRESHOLD := 0.05
+
+var minimum_drag_time_elapsed := false
 
 func enter() -> void:
 	# 使用组名查找BattleUI，然后将当前拖拽的卡牌的父节点指向它
@@ -9,22 +12,23 @@ func enter() -> void:
 	
 	card_ui.color.color = Color.NAVY_BLUE
 	card_ui.state.text = "DRAGGING"
+	
+	minimum_drag_time_elapsed = false
+	var threshold_timer := get_tree().create_timer(DRAG_MINIMUM_THRESHOLD, false)
+	threshold_timer.timeout.connect(func(): minimum_drag_time_elapsed = true)
 
 
 func on_input(_event: InputEvent) -> void:
 	var mouse_motion := _event is InputEventMouseMotion
-	# 右键按下 = 取消
-	var cancel = _event.button_index == MOUSE_BUTTON_RIGHT and _event.pressed
+	var cancel = _event.is_action_pressed("right_mouse")
 	# 左键按下 / 左键抬起
-	var confirm_press = _event.button_index == MOUSE_BUTTON_LEFT and _event.pressed
-	var confirm_release = _event.button_index == MOUSE_BUTTON_LEFT and !_event.pressed
-	var confirm = confirm_release or confirm_press
+	var confirm = _event.is_action_released("left_mouse") or _event.is_action_pressed("left_mouse")
 	if mouse_motion:
 		card_ui.global_position = card_ui.get_global_mouse_position() - card_ui.pivot_offset
 	
 	if cancel:
 		transition_requested.emit(self, CardState.State.BASE)
-	elif confirm:
+	elif minimum_drag_time_elapsed and confirm:
 		# 将输入标记为已处理, 以免意外的立即拾取新的卡片
 		get_viewport().set_input_as_handled()
 		transition_requested.emit(self, CardState.State.RELEASED)

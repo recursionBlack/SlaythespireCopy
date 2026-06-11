@@ -14,7 +14,7 @@ func enter() -> void:
 
 
 func on_gui_input(_event: InputEvent) -> void:
-	if _event is InputEventMouseButton and _event.button_index == MOUSE_BUTTON_LEFT and _event.pressed:
+	if _event.is_action_pressed("left_mouse"):
 		# 将卡牌跟随鼠标的位置设置为鼠标点击时在卡牌的位置，而非卡牌的左上角
 		card_ui.pivot_offset = card_ui.get_global_mouse_position() - card_ui.global_position
 		transition_requested.emit(self, CardState.State.CLICKED)
