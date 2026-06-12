@@ -33,6 +33,7 @@ func create_instance() -> Resource:
 	instance.block = 0
 	instance.reset_mana()
 	instance.deck = instance.starting_deck.duplicate()
+	print("方法1 - deck 是否为 null: ", instance.deck == null)
 	instance.draw_pile = CardPile.new()
 	instance.discard = CardPile.new()
 	

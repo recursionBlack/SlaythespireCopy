@@ -42,7 +42,6 @@ func hide_tooltip() -> void:
 
 func hide_animation() -> void:
 	if not is_visible:
-		print("hide_animation")
 		tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(self, "modulate", Color.TRANSPARENT, fade_secounds)
 		tween.tween_callback(hide)

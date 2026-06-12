@@ -30,8 +30,6 @@ func _get_points() -> Array:
 	start.x += (current_card.size.x / 2)
 	var target := get_global_mouse_position()
 	var distance := (target - start)
-	print("start", start)
-	print("target", target)
 	
 	# 采样所有点，并利用缓动坐标到这些所有点
 	for i in range(ARC_POINTS):

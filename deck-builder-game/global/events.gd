@@ -8,3 +8,7 @@ signal card_aim_ended(card_ui: CardUI)
 signal card_played(card: Card)
 signal card_tooltip_requested(card: Card)
 signal tooltip_hide_requested
+
+# Player-related events
+# 当抽完所有卡牌时，发送该信号
+signal player_hand_drawn
