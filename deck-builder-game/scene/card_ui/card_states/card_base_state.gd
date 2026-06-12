@@ -16,6 +16,9 @@ func enter() -> void:
 
 
 func on_gui_input(_event: InputEvent) -> void:
+	if not card_ui.playable or card_ui.disabled:
+		return
+	
 	if _event.is_action_pressed("left_mouse"):
 		# 将卡牌跟随鼠标的位置设置为鼠标点击时在卡牌的位置，而非卡牌的左上角
 		card_ui.pivot_offset = card_ui.get_global_mouse_position() - card_ui.global_position
@@ -23,8 +26,14 @@ func on_gui_input(_event: InputEvent) -> void:
 
 
 func on_mouse_entered() -> void:
+	if not card_ui.playable or card_ui.disabled:
+		return
+	
 	card_ui.panel.set("theme_override_styles/panel", card_ui.HOVER_STYLEBOX)
 
 
 func on_mouse_exited() -> void:
+	if not card_ui.playable or card_ui.disabled:
+		return
+	
 	card_ui.panel.set("theme_override_styles/panel", card_ui.BASE_STYLEBOX)
