@@ -2,8 +2,6 @@ extends CardState
 
 
 func enter() -> void:
-	card_ui.color.color = Color.ORANGE
-	card_ui.state.text = "CLICKED"
 	# 在卡片ui的放置点检测器上，启用监控功能
 	card_ui.drop_point_detector.monitoring = true
 

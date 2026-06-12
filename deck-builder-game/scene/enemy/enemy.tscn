@@ -26,3 +26,6 @@ shape = SubResource("RectangleShape2D_gk444")
 [node name="StatsUI" parent="." unique_id=918150867 instance=ExtResource("3_tu2m7")]
 offset_top = 7.0
 offset_bottom = 23.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
