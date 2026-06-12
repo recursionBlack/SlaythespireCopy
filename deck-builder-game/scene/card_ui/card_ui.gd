@@ -9,6 +9,7 @@ const DRAG_STYLEBOX := preload("uid://g5h276x8d4d4")
 const HOVER_STYLEBOX := preload("uid://bpowp4huwkv4o")
 
 @export var card: Card: set = _set_card
+@export var char_stats: CharacterStats
 
 @onready var panel: Panel = $Panel
 @onready var cost: Label = $Cost
@@ -32,6 +33,14 @@ func _input(event: InputEvent) -> void:
 func animate_to_position(new_position: Vector2, duration: float) -> void:
 	tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "global_position", new_position, duration)
+
+
+func play() -> void:
+	if not card:
+		return
+	
+	card.play(targets, char_stats)
+	queue_free()
 
 func _on_gui_input(event: InputEvent) -> void:
 	card_state_machine.on_gui_input(event)
