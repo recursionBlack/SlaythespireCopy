@@ -1,4 +1,5 @@
 extends HBoxContainer
+# 手牌区
 class_name Hand
 
 @export var char_stats: CharacterStats
@@ -19,6 +20,16 @@ func add_card(card: Card) -> void:
 	new_card_ui.card = card
 	new_card_ui.parent = self
 	new_card_ui.char_stats = char_stats
+
+
+func discard_card(card: CardUI) -> void:
+	card.queue_free()
+
+
+# 防止在弃牌过程中，玩家与卡牌交互
+func disable_hand() -> void:
+	for card in get_children():
+		card.disabled = true
 
 
 func _on_card_played(_card: Card) -> void:

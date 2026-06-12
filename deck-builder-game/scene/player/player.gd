@@ -8,7 +8,7 @@ class_name Player
 
 
 func set_character_stats(value: CharacterStats) -> void:
-	stats = value.create_instance()
+	stats = value
 	
 	if not stats.stats_changed.is_connected(update_stats):
 		stats.stats_changed.connect(update_stats)

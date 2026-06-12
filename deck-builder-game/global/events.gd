@@ -10,5 +10,8 @@ signal card_tooltip_requested(card: Card)
 signal tooltip_hide_requested
 
 # Player-related events
-# 当抽完所有卡牌时，发送该信号
+# 当回合开始时抽牌完成，发送该信号
 signal player_hand_drawn
+# 当弃掉所有卡牌时触发
+signal player_hand_discarded
+signal player_turn_ended
