@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://b85fkguthvebj" path="res://characters/warrior/Cards/warrior_axe_attack.tres" id="4_yjev4"]
 [ext_resource type="Resource" uid="uid://comnd4nj0f18j" path="res://characters/warrior/Cards/warrior_block.tres" id="5_53mgl"]
 [ext_resource type="PackedScene" uid="uid://bpt8037vqoi3a" path="res://scene/ui/mana_ui.tscn" id="11_yfigx"]
+[ext_resource type="PackedScene" uid="uid://cqnk6fbnjan1u" path="res://scene/ui/tooltip.tscn" id="12_yhj4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7aow"]
 size = Vector2(256, 100)
@@ -76,3 +77,7 @@ char_stats = ExtResource("4_6y0hr")
 
 [node name="ManaUI" parent="BattleUI" unique_id=577317486 instance=ExtResource("11_yfigx")]
 char_stats = ExtResource("4_6y0hr")
+
+[node name="Tooltip" parent="BattleUI" unique_id=601240789 instance=ExtResource("12_yhj4q")]
+offset_top = 5.0
+offset_bottom = 41.0
