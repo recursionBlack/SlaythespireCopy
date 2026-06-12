@@ -1,0 +1,39 @@
+extends Stats
+class_name CharacterStats
+
+# 初始牌堆，每回合抽牌数，最大法力值
+@export var starting_deck: CardPile
+@export var cards_per_turn: int
+@export var max_mana :int
+
+var mana: int :set = set_mana
+# 总卡组，弃牌堆，抽牌堆
+var deck: CardPile
+var discard: CardPile
+var draw_pile: CardPile
+
+
+func set_mana(value: int) -> void:
+	mana = value
+	stats_changed.emit()
+
+
+# 每回合开始时被调用
+func reset_mana() -> void:
+	self.mana = max_mana
+
+
+func can_play_card(card: Card) -> bool:
+	return mana >= card.cost
+
+
+func create_instance() -> Resource:
+	var instance: CharacterStats = self.duplicate()
+	instance.health = max_health
+	instance.block = 0
+	instance.reset_mana()
+	instance.deck = instance.starting_deck.duplicate()
+	instance.draw_pile = CardPile.new()
+	instance.discard = CardPile.new()
+	
+	return instance
