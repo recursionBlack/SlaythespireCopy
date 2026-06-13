@@ -29,7 +29,7 @@ func get_first_conditional_action() -> EnemyAction:
 		if not action or action.type != EnemyAction.Type.CONDITIONAL:
 			continue
 		
-		if action.is_preformable():
+		if action.is_performable():
 			return action
 		
 	return null

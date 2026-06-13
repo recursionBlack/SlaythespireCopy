@@ -15,6 +15,8 @@ signal player_hand_drawn
 # 当弃掉所有卡牌时触发
 signal player_hand_discarded
 signal player_turn_ended
+signal player_died
 
 # Enemy-related events
 signal enemy_action_completed(enemy: Enemy)
+signal enemy_turn_ended

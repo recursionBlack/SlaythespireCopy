@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://5bibg448vrxn" path="res://scene/card_target_selector/card_target_selector.tscn" id="3_gk444"]
 [ext_resource type="PackedScene" uid="uid://pil5mb3oxvqo" path="res://scene/player/player.tscn" id="3_twcql"]
 [ext_resource type="Resource" uid="uid://djuskorp26sm7" path="res://characters/warrior/warrior.tres" id="4_6y0hr"]
+[ext_resource type="Script" uid="uid://ckagohcsvhq57" path="res://scene/enemy/enemy_handler.gd" id="4_l2bdv"]
 [ext_resource type="Resource" uid="uid://bulsriyl5cuk8" path="res://enemies/crab/carb_enemy.tres" id="5_74lao"]
 [ext_resource type="Script" uid="uid://bwptssbs2o48p" path="res://scene/ui/battle_ui.gd" id="7_74lao"]
 [ext_resource type="Script" uid="uid://v6of713k62rn" path="res://scene/player/player_handler.gd" id="8_yhj4q"]
@@ -36,7 +37,10 @@ position = Vector2(128, 50)
 shape = SubResource("RectangleShape2D_p7aow")
 debug_color = Color(0, 0.6, 0.7019608, 0.11764706)
 
-[node name="Enemy" parent="." unique_id=340028930 instance=ExtResource("2_5xu2w")]
+[node name="EnemyHandler" type="Node2D" parent="." unique_id=408114708]
+script = ExtResource("4_l2bdv")
+
+[node name="Enemy" parent="EnemyHandler" unique_id=340028930 instance=ExtResource("2_5xu2w")]
 position = Vector2(210, 77)
 stats = ExtResource("5_74lao")
 

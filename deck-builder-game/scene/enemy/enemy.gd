@@ -24,6 +24,10 @@ func set_enemy_stats(value: EnemyStats) -> void:
 	update_enemy()
 
 
+func set_current_action(value: EnemyAction) -> void:
+	current_action = value
+
+
 func set_ai() -> void:
 	if enemy_action_picker:
 		enemy_action_picker.queue_free()
