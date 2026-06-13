@@ -17,8 +17,8 @@ const HOVER_STYLEBOX := preload("uid://bpowp4huwkv4o")
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var targets: Array[Node] = []
-@onready var orginal_index := self.get_index()
 
+var orginal_index := 0
 var parent: Control
 var tween: Tween
 # 根据法力值决定当前卡是否可以打出

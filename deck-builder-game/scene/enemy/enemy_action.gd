@@ -4,6 +4,7 @@ class_name EnemyAction
 # 条件性的，和概率性的行动类型
 enum Type {CONDITIONAL, CHANCE_BASED}
 
+@export var intent: Intent
 @export var type: Type
 @export_range(0.0, 10.0) var chance_weight := 0.0
 

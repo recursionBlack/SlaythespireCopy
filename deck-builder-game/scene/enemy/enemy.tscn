@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_yijav"]
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_msiye"]
 [ext_resource type="PackedScene" uid="uid://dwmyos24v6u3s" path="res://scene/ui/stats_ui.tscn" id="3_tu2m7"]
+[ext_resource type="PackedScene" uid="uid://dcyhsifso4uo3" path="res://scene/ui/intent_ui.tscn" id="5_dd7y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk444"]
 
@@ -26,6 +27,10 @@ shape = SubResource("RectangleShape2D_gk444")
 [node name="StatsUI" parent="." unique_id=918150867 instance=ExtResource("3_tu2m7")]
 offset_top = 7.0
 offset_bottom = 23.0
+
+[node name="IntentUI" parent="." unique_id=1839823131 instance=ExtResource("5_dd7y5")]
+offset_top = -23.0
+offset_bottom = -9.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

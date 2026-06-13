@@ -6,12 +6,6 @@ class_name Hand
 
 @onready var card_ui := preload("res://scene/card_ui/card_ui.tscn")
 
-var cards_played_this_turn := 0
-
-
-func _ready() -> void:
-	Events.card_played.connect(_on_card_played)
-
 
 func add_card(card: Card) -> void:
 	var new_card_ui := card_ui.instantiate()
@@ -32,13 +26,9 @@ func disable_hand() -> void:
 		card.disabled = true
 
 
-func _on_card_played(_card: Card) -> void:
-	cards_played_this_turn += 1
-
-
 func _on_card_ui_reparent_requested(child: CardUI) -> void:
 	child.disabled = true
 	child.reparent(self)
-	var new_index := clampi(child.orginal_index - cards_played_this_turn, 0, get_child_count())
+	var new_index := clampi(child.orginal_index, 0, get_child_count())
 	move_child.call_deferred(child, new_index)
 	child.set_deferred("disabled", false)
