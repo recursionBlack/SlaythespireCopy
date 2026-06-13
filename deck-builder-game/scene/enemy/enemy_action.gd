@@ -14,7 +14,7 @@ var target: Node2D
 
 
 # 虚函数，是否可以执行条件性action，由各个子类自行实现
-func is_preformable() -> bool:
+func is_performable() -> bool:
 	return false
 
 
