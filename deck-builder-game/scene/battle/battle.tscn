@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ncdlrvxvj84" path="res://scene/enemy/enemy.tscn" id="2_5xu2w"]
 [ext_resource type="Script" uid="uid://c0mit3q3wbd7y" path="res://scene/ui/hand.gd" id="2_wq6iy"]
 [ext_resource type="PackedScene" uid="uid://5bibg448vrxn" path="res://scene/card_target_selector/card_target_selector.tscn" id="3_gk444"]
+[ext_resource type="AudioStream" uid="uid://dpdenqqbovwfq" path="res://art/8_bit_iced_village_lofi.mp3" id="3_qyclh"]
 [ext_resource type="PackedScene" uid="uid://pil5mb3oxvqo" path="res://scene/player/player.tscn" id="3_twcql"]
 [ext_resource type="Resource" uid="uid://djuskorp26sm7" path="res://characters/warrior/warrior.tres" id="4_6y0hr"]
 [ext_resource type="Script" uid="uid://ckagohcsvhq57" path="res://scene/enemy/enemy_handler.gd" id="4_l2bdv"]
@@ -22,6 +23,7 @@ size = Vector2(256, 100)
 [node name="Battle" type="Node2D" unique_id=840461975]
 script = ExtResource("1_l2bdv")
 char_stats = ExtResource("4_6y0hr")
+music = ExtResource("3_qyclh")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1191576011]

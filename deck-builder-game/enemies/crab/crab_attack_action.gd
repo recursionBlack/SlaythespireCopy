@@ -14,6 +14,7 @@ func perform_action() -> void:
 	var damage_effect := DamageEffect.new()
 	var target_array: Array[Node] = [target]
 	damage_effect.amount = damage
+	damage_effect.sound = sound
 	
 	# 执行缓动动画
 	# adamn认为，缓动动画不需要提取为虚函数，或者做成单独的类，封装由于组合
