@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://ckagohcsvhq57" path="res://scene/enemy/enemy_handler.gd" id="4_l2bdv"]
 [ext_resource type="Resource" uid="uid://bulsriyl5cuk8" path="res://enemies/crab/carb_enemy.tres" id="5_74lao"]
 [ext_resource type="Script" uid="uid://bwptssbs2o48p" path="res://scene/ui/battle_ui.gd" id="7_74lao"]
+[ext_resource type="Resource" uid="uid://ttw1dpjf265o" path="res://enemies/bat/bat_enemy.tres" id="8_45prw"]
 [ext_resource type="Script" uid="uid://v6of713k62rn" path="res://scene/player/player_handler.gd" id="8_yhj4q"]
 [ext_resource type="PackedScene" uid="uid://bpt8037vqoi3a" path="res://scene/ui/mana_ui.tscn" id="11_yfigx"]
 [ext_resource type="PackedScene" uid="uid://cqnk6fbnjan1u" path="res://scene/ui/tooltip.tscn" id="12_yhj4q"]
@@ -44,9 +45,17 @@ debug_color = Color(0, 0.6, 0.7019608, 0.11764706)
 [node name="EnemyHandler" type="Node2D" parent="." unique_id=408114708]
 script = ExtResource("4_l2bdv")
 
-[node name="Enemy" parent="EnemyHandler" unique_id=340028930 instance=ExtResource("2_5xu2w")]
+[node name="BatEnemy" parent="EnemyHandler" unique_id=1811423527 instance=ExtResource("2_5xu2w")]
+position = Vector2(175, 53)
+stats = ExtResource("8_45prw")
+
+[node name="CrabEnemy" parent="EnemyHandler" unique_id=340028930 instance=ExtResource("2_5xu2w")]
 position = Vector2(210, 77)
 stats = ExtResource("5_74lao")
+
+[node name="BatEnemy2" parent="EnemyHandler" unique_id=2145958724 instance=ExtResource("2_5xu2w")]
+position = Vector2(239, 54)
+stats = ExtResource("8_45prw")
 
 [node name="Player" parent="." unique_id=158544402 instance=ExtResource("3_twcql")]
 position = Vector2(52, 77)
