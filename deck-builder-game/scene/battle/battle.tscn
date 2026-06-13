@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cqnk6fbnjan1u" path="res://scene/ui/tooltip.tscn" id="12_yhj4q"]
 [ext_resource type="Theme" uid="uid://cjp54jdhh8u1n" path="res://main_theme.tres" id="13_74lao"]
 [ext_resource type="Script" uid="uid://cft8igku155ao" path="res://scene/ui/red_flash.gd" id="15_rcqy1"]
+[ext_resource type="PackedScene" uid="uid://cke8wkaenflcx" path="res://scene/ui/battle_over_panel.tscn" id="17_sjq7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7aow"]
 size = Vector2(256, 100)
@@ -114,3 +115,9 @@ color = Color(1, 0.44313726, 0.44313726, 0)
 [node name="Timer" type="Timer" parent="RedFlash" unique_id=1095257043]
 wait_time = 0.1
 one_shot = true
+
+[node name="BattleOverLayer" type="CanvasLayer" parent="." unique_id=272353088]
+layer = 2
+
+[node name="BattleOverPanel" parent="BattleOverLayer" unique_id=406614441 instance=ExtResource("17_sjq7y")]
+visible = false

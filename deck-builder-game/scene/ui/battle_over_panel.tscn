@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cke8wkaenflcx"]
+
+[ext_resource type="Script" uid="uid://dqfdgeea2vsqy" path="res://scene/ui/battle_over_panel.gd" id="1_q6ntb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp8r6"]
+bg_color = Color(0, 0, 0, 0.34901962)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q6ntb"]
+font_size = 24
+
+[node name="BattleOverPanel" type="Panel" unique_id=406614441]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jp8r6")
+script = ExtResource("1_q6ntb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1594861488]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1287948081]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Victory!"
+label_settings = SubResource("LabelSettings_q6ntb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueBtn" type="Button" parent="VBoxContainer" unique_id=1111467918]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Awesome!"
+
+[node name="RestartBtn" type="Button" parent="VBoxContainer" unique_id=2051599249]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Restart"

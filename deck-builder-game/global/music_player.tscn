@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bbbx7p70f22tq" path="res://global/sound_player.gd" id="1_uyuvo"]
 
 [node name="MusicPlayer" type="Node" unique_id=640094195]
+process_mode = 3
 script = ExtResource("1_uyuvo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2009208824]
