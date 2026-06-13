@@ -15,6 +15,8 @@ signal player_hand_drawn
 # 当弃掉所有卡牌时触发
 signal player_hand_discarded
 signal player_turn_ended
+# 玩家实际受伤掉血时才会触发
+signal player_hit
 signal player_died
 
 # Enemy-related events
