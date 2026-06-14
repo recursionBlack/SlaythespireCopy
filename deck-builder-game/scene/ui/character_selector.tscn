@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://81jeg3kvnlb3"]
 
 [ext_resource type="Script" uid="uid://chuhgpi8ls6f4" path="res://scene/ui/character_selector.gd" id="1_x24es"]
+[ext_resource type="Resource" uid="uid://cb558grauu5rm" path="res://scene/run/run_startup.tres" id="2_a6xre"]
 [ext_resource type="Texture2D" uid="uid://cqcal03735mv8" path="res://art/tile_0118.png" id="3_x24es"]
 [ext_resource type="Texture2D" uid="uid://pgj8vfpj6tc5" path="res://art/tile_0130.png" id="4_a6xre"]
 [ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="4_v30x4"]
@@ -34,6 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x24es")
+run_startup = ExtResource("2_a6xre")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1987941976]
 layout_mode = 1

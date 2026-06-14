@@ -1,8 +1,12 @@
 extends Control
 
+const RUN_SCENE := preload("res://scene/run/run.tscn")
 const ASSASSIN_STATS := preload("res://characters/assassin/assassin.tres")
 const WARRIOR_STATS := preload("res://characters/warrior/warrior.tres")
 const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
+
+
+@export var run_startup: RunStartup
 
 @onready var title: Label = %Title
 @onready var description: Label = %Description
@@ -23,6 +27,10 @@ func set_current_character(new_character: CharacterStats) -> void:
 
 func _on_start_btn_pressed() -> void:
 	print("Start new Run with %s" % current_character.charactor_name)
+	# 把选中的角色信息，通过运行启动资源，传递给run场景
+	run_startup.type = RunStartup.Type.NEW_RUN
+	run_startup.picked_character = current_character
+	get_tree().change_scene_to_packed(RUN_SCENE)
 
 
 func _on_warrior_btn_pressed() -> void:
