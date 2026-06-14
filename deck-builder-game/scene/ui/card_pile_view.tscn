@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cm2wpyuo5ic7w"]
+
+[ext_resource type="PackedScene" uid="uid://dasqlu5jjunte" path="res://scene/ui/card_menu_ui.tscn" id="1_3eify"]
+[ext_resource type="Script" uid="uid://0yo4k7ygo8a4" path="res://scene/ui/card_pile_view.gd" id="1_ds6rp"]
+[ext_resource type="PackedScene" uid="uid://d4erv5bn7fonh" path="res://scene/ui/card_tooltip_popup.tscn" id="3_tjx5m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ajepa"]
+font_size = 12
+
+[node name="CardPileView" type="Control" unique_id=380047848]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ds6rp")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1509274153]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6509804)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=920700853]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=388255511]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=470335074]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Discard Pile"
+label_settings = SubResource("LabelSettings_ajepa")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=1159441409]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+
+[node name="Cards" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=701279776]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 8
+columns = 6
+
+[node name="CardMenuUI" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" unique_id=1041982636 instance=ExtResource("1_3eify")]
+layout_mode = 2
+
+[node name="BackBtn" type="Button" parent="." unique_id=36640212]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -49.0
+offset_top = 10.0
+offset_right = -9.0
+offset_bottom = 24.0
+grow_horizontal = 0
+text = "Back"
+
+[node name="CardTooltipPopup" parent="." unique_id=1549993732 instance=ExtResource("3_tjx5m")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
