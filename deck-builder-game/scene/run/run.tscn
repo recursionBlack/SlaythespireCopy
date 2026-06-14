@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://c8lymb2ygqcp1" path="res://scene/run/run.gd" id="1_2vrtk"]
 [ext_resource type="PackedScene" uid="uid://csn2ucxa1wlry" path="res://scene/map/map.tscn" id="1_gcpla"]
 [ext_resource type="Resource" uid="uid://cb558grauu5rm" path="res://scene/run/run_startup.tres" id="2_xx2sb"]
+[ext_resource type="PackedScene" uid="uid://q7th6jklyb2y" path="res://scene/ui/card_pile_opener.tscn" id="4_jl7ou"]
+[ext_resource type="Texture2D" uid="uid://barletlddvms8" path="res://art/deck.png" id="5_te63u"]
+[ext_resource type="PackedScene" uid="uid://cm2wpyuo5ic7w" path="res://scene/ui/card_pile_view.tscn" id="6_te63u"]
 
 [node name="Run" type="Node" unique_id=1416644894]
 script = ExtResource("1_2vrtk")
@@ -16,6 +19,7 @@ run_startup = ExtResource("2_xx2sb")
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+alignment = 1
 
 [node name="MapBtn" type="Button" parent="DebugBtns" unique_id=841097737]
 unique_name_in_owner = true
@@ -46,3 +50,42 @@ text = "Rewards"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Campfire"
+
+[node name="TopBar" type="CanvasLayer" parent="." unique_id=622697163]
+layer = 3
+
+[node name="ColorRect" type="ColorRect" parent="TopBar" unique_id=1884903665]
+custom_minimum_size = Vector2(0, 18)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="BarItems" type="HBoxContainer" parent="TopBar" unique_id=1650408229]
+custom_minimum_size = Vector2(0, 18)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Placeholder" type="Control" parent="TopBar/BarItems" unique_id=2031898730]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DeckBtn" parent="TopBar/BarItems" unique_id=1086308784 node_paths=PackedStringArray("counter") instance=ExtResource("4_jl7ou")]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("5_te63u")
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="TopBar/BarItems/DeckBtn" unique_id=1164780343]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 11.0
+offset_right = 5.0
+offset_bottom = 17.0
+text = "99"
+horizontal_alignment = 2
+
+[node name="DeckView" parent="TopBar" unique_id=380047848 instance=ExtResource("6_te63u")]
+unique_name_in_owner = true
+visible = false
