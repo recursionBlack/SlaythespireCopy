@@ -1,6 +1,12 @@
 extends Stats
 class_name CharacterStats
 
+@export_group("Visuals")
+@export var charactor_name: String
+@export_multiline var description: String
+@export var portrait: Texture
+
+@export_group("Gameplay Data")
 # 初始牌堆，每回合抽牌数，最大法力值
 @export var starting_deck: CardPile
 @export var cards_per_turn: int

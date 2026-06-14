@@ -1,5 +1,7 @@
 extends Control
 
+const CHAR_SELECTOR_SCENE := preload("res://scene/ui/character_selector.tscn")
+
 @onready var continue_btn: Button = %Continue
 @onready var new_run: Button = $VBoxContainer/NewRun
 
@@ -14,7 +16,9 @@ func _on_continue_pressed() -> void:
 
 
 func _on_new_run_pressed() -> void:
-	print("New Run")
+	# 这里的场景转换太简单干脆了，可以自行添加更华丽的转场效果
+	# 但本课程不会再次过多实现
+	get_tree().change_scene_to_packed(CHAR_SELECTOR_SCENE)
 
 
 func _on_exit_pressed() -> void:
