@@ -17,7 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://cqnk6fbnjan1u" path="res://scene/ui/tooltip.tscn" id="12_yhj4q"]
 [ext_resource type="Theme" uid="uid://cjp54jdhh8u1n" path="res://main_theme.tres" id="13_74lao"]
 [ext_resource type="Script" uid="uid://cft8igku155ao" path="res://scene/ui/red_flash.gd" id="15_rcqy1"]
+[ext_resource type="PackedScene" uid="uid://q7th6jklyb2y" path="res://scene/ui/card_pile_opener.tscn" id="17_gwx1q"]
 [ext_resource type="PackedScene" uid="uid://cke8wkaenflcx" path="res://scene/ui/battle_over_panel.tscn" id="17_sjq7y"]
+[ext_resource type="Texture2D" uid="uid://d174akbik3eyj" path="res://art/discard.png" id="18_0popl"]
+[ext_resource type="PackedScene" uid="uid://cm2wpyuo5ic7w" path="res://scene/ui/card_pile_view.tscn" id="21_xdyqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7aow"]
 size = Vector2(256, 100)
@@ -86,6 +89,10 @@ alignment = 1
 script = ExtResource("2_wq6iy")
 
 [node name="ManaUI" parent="BattleUI" unique_id=577317486 instance=ExtResource("11_yfigx")]
+offset_left = 9.0
+offset_top = -43.0
+offset_right = 27.0
+offset_bottom = -25.0
 char_stats = ExtResource("4_6y0hr")
 
 [node name="Tooltip" parent="BattleUI" unique_id=601240789 instance=ExtResource("12_yhj4q")]
@@ -100,13 +107,58 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -50.0
-offset_top = -19.0
+offset_top = -38.0
 offset_right = -5.0
-offset_bottom = -5.0
+offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("13_74lao")
 text = "End Turn"
+
+[node name="DrawPileBtn" parent="BattleUI" unique_id=1086308784 node_paths=PackedStringArray("counter") instance=ExtResource("17_gwx1q")]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -21.0
+offset_right = 26.0
+offset_bottom = -5.0
+grow_vertical = 0
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="BattleUI/DrawPileBtn" unique_id=2062733232]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 21.0
+offset_bottom = 18.0
+text = "99"
+
+[node name="DiscardPileBtn" parent="BattleUI" unique_id=1970708713 node_paths=PackedStringArray("counter") instance=ExtResource("17_gwx1q")]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -21.0
+offset_right = -8.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("18_0popl")
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="BattleUI/DiscardPileBtn" unique_id=370210131]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 12.0
+offset_right = 6.0
+offset_bottom = 18.0
+text = "73"
+horizontal_alignment = 2
 
 [node name="RedFlash" type="CanvasLayer" parent="." unique_id=504420373]
 layer = 2
@@ -129,4 +181,15 @@ one_shot = true
 layer = 2
 
 [node name="BattleOverPanel" parent="BattleOverLayer" unique_id=406614441 instance=ExtResource("17_sjq7y")]
+visible = false
+
+[node name="CardPileViews" type="CanvasLayer" parent="." unique_id=1934760293]
+layer = 3
+
+[node name="DrawPileView" parent="CardPileViews" unique_id=380047848 instance=ExtResource("21_xdyqg")]
+unique_name_in_owner = true
+visible = false
+
+[node name="DiscardPileView" parent="CardPileViews" unique_id=184714194 instance=ExtResource("21_xdyqg")]
+unique_name_in_owner = true
 visible = false
