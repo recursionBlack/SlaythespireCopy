@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dasqlu5jjunte"]
+
+[ext_resource type="Theme" uid="uid://cjp54jdhh8u1n" path="res://main_theme.tres" id="1_0h64r"]
+[ext_resource type="Script" uid="uid://blmtpv3hgsiyd" path="res://scene/ui/card_menu_ui.gd" id="1_dbdcb"]
+[ext_resource type="Resource" uid="uid://7gkdl58q74br" path="res://characters/warrior/Cards/warrior_slash.tres" id="2_8j7iv"]
+[ext_resource type="StyleBox" uid="uid://bd7cnl6r26ikp" path="res://scene/card_ui/card_base_stylebox.tres" id="3_u4bcd"]
+[ext_resource type="Texture2D" uid="uid://c6rme2o6dyaoj" path="res://art/tile_0104.png" id="4_tyncd"]
+
+[node name="CardMenuUI" type="CenterContainer" unique_id=1041982636]
+offset_right = 25.0
+offset_bottom = 30.0
+size_flags_horizontal = 3
+script = ExtResource("1_dbdcb")
+card = ExtResource("2_8j7iv")
+
+[node name="Visuals" type="Control" parent="." unique_id=944671324]
+custom_minimum_size = Vector2(25, 30)
+layout_mode = 2
+theme = ExtResource("1_0h64r")
+
+[node name="Panel" type="Panel" parent="Visuals" unique_id=375648096]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_u4bcd")
+
+[node name="Cost" type="Label" parent="Visuals" unique_id=911503948]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Visuals" unique_id=1449613790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_tyncd")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="gui_input" from="Visuals" to="." method="_on_visuals_gui_input"]
+[connection signal="mouse_entered" from="Visuals" to="." method="_on_visuals_mouse_entered"]
+[connection signal="mouse_exited" from="Visuals" to="." method="_on_visuals_mouse_exited"]
