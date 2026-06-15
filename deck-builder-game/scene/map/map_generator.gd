@@ -17,3 +17,47 @@ var random_room_type_weights = {
 	Room.Type.CAMPFIRE: 0.0,
 	Room.Type.SHOP: 0.0,
 }
+
+var random_room_type_total_weight := 0
+var map_data: Array[Array]
+
+
+func _ready() -> void:
+	generate_map()
+
+
+func generate_map() -> Array[Array]:
+	map_data = _generate_initial_grid()
+	
+	var i := 0
+	for floor in map_data:
+		print("floor %s:\t%s" % [i, floor])
+		i += 1
+	
+	return [[]]
+
+
+func _generate_initial_grid() -> Array[Array]:
+	var result: Array[Array] = []
+	
+	for row in FLOORS:
+		# 每一层的房间，称为相邻房间
+		var adjacent_rooms: Array[Room] = []
+		
+		for col in MAP_WIDTH:
+			var current_room := Room.new()
+			var offset := Vector2(randf(), randf()) * PLACEMENT_RANDOMNESS
+			current_room.position = Vector2(col * X_DIST, row * -Y_DIST) + offset
+			current_room.row = row
+			current_room.column = col
+			current_room.next_rooms = []
+			
+			# Boss room has a non-random Y
+			if row == FLOORS - 1:
+				current_room.position.y = (row + 1) * -Y_DIST
+			
+			adjacent_rooms.append(current_room)
+		
+		result.append(adjacent_rooms)
+	
+	return result
