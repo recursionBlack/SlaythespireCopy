@@ -11,6 +11,7 @@ const TREASURE_SCENE := preload("res://scene/treasure/treasure.tscn")
 @export var run_startup: RunStartup
 
 @onready var current_view: Node = $CurrentView
+@onready var gold_ui: GoldUI = %GoldUI
 @onready var deck_btn: CardPileOpener = %DeckBtn
 @onready var deck_view: CardPileView = %DeckView
 
@@ -21,6 +22,7 @@ const TREASURE_SCENE := preload("res://scene/treasure/treasure.tscn")
 @onready var shop_btn: Button = %ShopBtn
 @onready var treasure_btn: Button = %TreasureBtn
 
+var stats: RunStats
 var character: CharacterStats
 
 
@@ -37,6 +39,8 @@ func _ready() -> void:
 
 
 func _start_run() -> void:
+	stats = RunStats.new()
+	
 	_setup_event_connections()
 	_setup_top_bar()
 	print("TODO: procedurally generate map")
@@ -68,8 +72,7 @@ func _setup_event_connections() -> void:
 
 
 func _setup_top_bar()-> void:
-	print(character)
-	print(character.deck)
+	gold_ui.run_stats = stats
 	deck_btn.card_pile = character.deck
 	deck_view.card_pile = character.deck
 	deck_btn.pressed.connect(deck_view.show_current_view.bind("Deck"))
