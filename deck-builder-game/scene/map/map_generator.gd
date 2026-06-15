@@ -30,6 +30,19 @@ func generate_map() -> Array[Array]:
 	map_data = _generate_initial_grid()
 	var starting_points := _get_random_starting_points()
 	
+	for j in starting_points:
+		var current_j := j
+		for i in FLOORS - 1:
+			current_j = _setup_connection(i, current_j)
+			
+	var i := 0
+	for floor in map_data:
+		print("floor %s" % i)
+		var used_rooms = floor.filter(
+			func(room: Room): return room.next_rooms.size() > 0
+		)
+		print(used_rooms)
+		i+=1
 	
 	return [[]]
 
@@ -76,3 +89,46 @@ func _get_random_starting_points() -> Array[int]:
 			y_coordinates.append(starting_point)
 	
 	return y_coordinates
+
+
+func _setup_connection(i: int, j: int) -> int:
+	var next_room: Room
+	var current_room := map_data[i][j] as Room
+	
+	while not next_room or _would_cross_existing_path(i, j, next_room):
+		# 路线的下一个房间，总是在左一，正上，右一，三个房间里选择，还注意不要超出边界范围
+		var random_j := clampi(randi_range(j - 1, j + 1), 0, MAP_WIDTH - 1)
+		next_room = map_data[i + 1][random_j]
+	
+	current_room.next_rooms.append(next_room)
+	
+	return next_room.column
+
+
+func _would_cross_existing_path(i: int, j: int, room: Room) -> bool:
+	var left_neighbour: Room
+	var right_neighbour: Room
+	
+	# if j == 0, there's no left neighbour
+	if j > 0:
+		left_neighbour = map_data[i][j - 1]
+	
+	# j == MAP_WIDTH-1, there's no right neighbour
+	if j < MAP_WIDTH - 1:
+		right_neighbour = map_data[i][j + 1]
+	
+	# can't cross in right dir if right neighbour goes to left
+	# room是我们当前节点想要千万的下一个房间
+	if right_neighbour and room.column > j:
+		for next_room: Room in right_neighbour.next_rooms:
+			if next_room.column < room.column:
+				return true
+	
+	# can't cross in left dir if left neighbour goes to right
+	if left_neighbour and room.column < j:
+		for next_room: Room in left_neighbour.next_rooms:
+			if next_room.column > room.column:
+				return true
+	
+	# 表示可以建立从我们当前房间到目标room的连接，该room可以作为当前节点的next_room
+	return false
