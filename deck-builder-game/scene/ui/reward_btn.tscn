@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cvc13scnfabo3"]
+
+[ext_resource type="Script" uid="uid://ms4mxdixfeo7" path="res://scene/ui/reward_btn.gd" id="1_04bd1"]
+[ext_resource type="Texture2D" uid="uid://bagcuc5ysfb78" path="res://art/gold.png" id="1_7gypu"]
+
+[node name="RewardBtn" type="Button" unique_id=421772636]
+custom_minimum_size = Vector2(0, 14.2)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -181.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04bd1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=760396293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=618297941]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="CustomIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=31641109]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("1_7gypu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CustomText" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1362304920]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "99 gold"
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
