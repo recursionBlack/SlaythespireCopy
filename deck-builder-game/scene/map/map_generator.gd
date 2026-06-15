@@ -35,6 +35,10 @@ func generate_map() -> Array[Array]:
 		for i in FLOORS - 1:
 			current_j = _setup_connection(i, current_j)
 			
+	_setup_boss_room()
+	_setup_random_room_weights()
+	_setup_room_types()
+	
 	var i := 0
 	for floor in map_data:
 		print("floor %s" % i)
@@ -44,7 +48,7 @@ func generate_map() -> Array[Array]:
 		print(used_rooms)
 		i+=1
 	
-	return [[]]
+	return map_data
 
 
 func _generate_initial_grid() -> Array[Array]:
@@ -132,3 +136,110 @@ func _would_cross_existing_path(i: int, j: int, room: Room) -> bool:
 	
 	# 表示可以建立从我们当前房间到目标room的连接，该room可以作为当前节点的next_room
 	return false
+
+
+func _setup_boss_room() -> void:
+	var middle := floori(MAP_WIDTH * 0.5)
+	var boss_room := map_data[FLOORS - 1][middle] as Room
+	
+	for j in MAP_WIDTH:
+		var current_room = map_data[FLOORS - 2][j] as Room
+		if current_room.next_rooms:
+			current_room.next_rooms = [] as Array[Room]
+			current_room.next_rooms.append(boss_room)
+	
+	boss_room.type = Room.Type.BOSS
+
+
+func _setup_random_room_weights() -> void:
+	random_room_type_weights[Room.Type.MONSTER] = MONSTER_ROOM_WEIGHT
+	random_room_type_weights[Room.Type.CAMPFIRE] = MONSTER_ROOM_WEIGHT + CAMPFIRE_ROOM_WEIGHT
+	random_room_type_weights[Room.Type.SHOP] = MONSTER_ROOM_WEIGHT + CAMPFIRE_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
+	
+	random_room_type_total_weight = random_room_type_weights[Room.Type.SHOP]
+
+
+func _setup_room_types() -> void:
+	# first floor is always a battle
+	for room: Room in map_data[0]:
+		if room.next_rooms.size() > 0:
+			room.type = Room.Type.MONSTER
+	
+	# 9th floor is always a treasure
+	for room: Room in map_data[8]:
+		if room.next_rooms.size() > 0:
+			room.type = Room.Type.TREASURE
+	
+	# last floor before the boss is always a campfire
+	for room: Room in map_data[13]:
+		if room.next_rooms.size() > 0:
+			room.type = Room.Type.CAMPFIRE
+	
+	# rest of room
+	for current_floor in map_data:
+		for room: Room in current_floor:
+			for next_room: Room in room.next_rooms:
+				if next_room.type == Room.Type.NOT_ASSIGNED:
+					_setup_room_randomly(next_room)
+
+
+func _setup_room_randomly(room_to_set: Room) -> void:
+	# 默认可能违反的4种规则：4层以下出现篝火，连续篝火，连续商店，13层是篝火
+	var campfire_below_4 := true
+	var consecutive_campfire := true
+	var consecutive_shop := true
+	var campfire_on_13 := true
+	
+	var type_candidate: Room.Type
+	
+	# 只要任何规则被违反，我们就继续抽取类型候选
+	while campfire_below_4 or consecutive_campfire or consecutive_shop or campfire_on_13:
+		type_candidate = _get_random_room_type_by_weight()
+		
+		var is_campfire := type_candidate == Room.Type.CAMPFIRE
+		var has_campfire_parent := _room_has_parent_of_type(room_to_set, Room.Type.CAMPFIRE)
+		var is_shop := type_candidate == Room.Type.SHOP
+		var has_shop_parent := _room_has_parent_of_type(room_to_set, Room.Type.SHOP)
+		
+		campfire_below_4 = is_campfire and room_to_set.row < 3
+		consecutive_campfire = is_campfire and has_campfire_parent
+		consecutive_shop = is_shop and has_shop_parent
+		campfire_on_13 = is_campfire and room_to_set.row == 12
+	
+	# 跳出循环表示该房间不会违反任何上述4种规则之一
+	room_to_set.type = type_candidate
+
+
+func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:
+	var parents: Array[Room] = []
+	# left parent 下左一
+	if room.column > 0 and room.row > 0:
+		var parent_candidate := map_data[room.row-1][room.column - 1] as Room
+		if parent_candidate.next_rooms.has(room):
+			parents.append(parent_candidate)
+	# parent below 正下
+	if room.row > 0:
+		var parent_candidate := map_data[room.row - 1][room.column] as Room
+		if parent_candidate.next_rooms.has(room):
+			parents.append(parent_candidate)
+	# right parent 下右一
+	if room.column < MAP_WIDTH - 1 and room.row > 0:
+		var parent_candidate := map_data[room.row-1][room.column + 1] as Room
+		if parent_candidate.next_rooms.has(room):
+			parents.append(parent_candidate)
+	
+	for parent: Room in parents:
+		if parent.type == type:
+			return true
+	
+	return false
+
+
+func _get_random_room_type_by_weight() -> Room.Type:
+	var roll := randf_range(0.0, random_room_type_total_weight)
+	
+	for type: Room.Type in random_room_type_weights:
+		if random_room_type_weights[type] > roll:
+			return type
+	
+	return Room.Type.MONSTER
