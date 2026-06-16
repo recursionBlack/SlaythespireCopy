@@ -26,17 +26,17 @@ func take_damage(damage: int) -> void:
 	
 	var initial_damage = damage
 	damage = clampi(damage - block, 0, damage)
-	self.block = clampi(block - initial_damage, 0, block)
-	self.health -= damage
+	block = clampi(block - initial_damage, 0, block)
+	health -= damage
 
 
 func heal(amount: int) -> void:
-	self.health += amount
+	health += amount
 
 
 # 解决遇到同种类型的多个敌人
 func create_instance() -> Resource:
-	var instance: Stats = self.duplicate()
+	var instance: Stats = duplicate()
 	instance.health = max_health
 	instance.block = 0
 	

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://8pml4asjrpyc"]
+
+[ext_resource type="PackedScene" uid="uid://c8ncdlrvxvj84" path="res://scene/enemy/enemy.tscn" id="1_qv72m"]
+[ext_resource type="Resource" uid="uid://ttw1dpjf265o" path="res://enemies/bat/bat_enemy.tres" id="2_3ob72"]
+
+[node name="Tier0Bats2" type="Node2D" unique_id=1762352813]
+
+[node name="Enemy" parent="." unique_id=340028930 instance=ExtResource("1_qv72m")]
+position = Vector2(169, 78)
+stats = ExtResource("2_3ob72")
+
+[node name="Enemy2" parent="." unique_id=1701268751 instance=ExtResource("1_qv72m")]
+position = Vector2(225, 78)
+stats = ExtResource("2_3ob72")
