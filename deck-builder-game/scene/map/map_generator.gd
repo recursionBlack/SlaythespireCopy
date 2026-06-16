@@ -11,6 +11,7 @@ const MONSTER_ROOM_WEIGHT := 10.0
 const SHOP_ROOM_WEIGHT := 2.5
 const CAMPFIRE_ROOM_WEIGHT := 4.0
 
+@export var battle_stats_pool: BattleStatsPool
 
 var random_room_type_weights = {
 	Room.Type.MONSTER: 0.0,
@@ -31,6 +32,8 @@ func generate_map() -> Array[Array]:
 		for i in FLOORS - 1:
 			current_j = _setup_connection(i, current_j)
 			
+	battle_stats_pool.setup()
+	
 	_setup_boss_room()
 	_setup_random_room_weights()
 	_setup_room_types()
@@ -136,6 +139,7 @@ func _setup_boss_room() -> void:
 			current_room.next_rooms.append(boss_room)
 	
 	boss_room.type = Room.Type.BOSS
+	boss_room.battle_stats = battle_stats_pool.get_random_battle_for_tier(2)
 
 
 func _setup_random_room_weights() -> void:
@@ -151,6 +155,7 @@ func _setup_room_types() -> void:
 	for room: Room in map_data[0]:
 		if room.next_rooms.size() > 0:
 			room.type = Room.Type.MONSTER
+			room.battle_stats = battle_stats_pool.get_random_battle_for_tier(0)
 	
 	# 9th floor is always a treasure
 	for room: Room in map_data[8]:
@@ -195,6 +200,14 @@ func _setup_room_randomly(room_to_set: Room) -> void:
 	
 	# 跳出循环表示该房间不会违反任何上述4种规则之一
 	room_to_set.type = type_candidate
+	
+	if type_candidate == Room.Type.MONSTER:
+		var tier_for_monster_rooms := 0
+		
+		if room_to_set.row > 2:
+			tier_for_monster_rooms = 1
+		
+		room_to_set.battle_stats = battle_stats_pool.get_random_battle_for_tier(tier_for_monster_rooms)
 
 
 func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:

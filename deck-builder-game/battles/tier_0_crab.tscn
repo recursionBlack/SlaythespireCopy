@@ -6,5 +6,5 @@
 [node name="Tier0Crab" type="Node2D" unique_id=994346425]
 
 [node name="Enemy" parent="." unique_id=340028930 instance=ExtResource("1_rpaj7")]
-position = Vector2(212, 97)
+position = Vector2(212, 75)
 stats = ExtResource("2_fxt1f")

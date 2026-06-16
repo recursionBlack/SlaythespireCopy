@@ -6,6 +6,23 @@ func _ready() -> void:
 	Events.enemy_action_completed.connect(_on_enemy_action_completed)
 
 
+func setup_enemies(battle_stats: BattleStats) -> void:
+	if not battle_stats:
+		return
+	
+	# 清除上一场战斗挂载的敌人,或敌人占位符
+	for enemy: Enemy in get_children():
+		enemy.queue_free()
+	
+	var all_new_enemies := battle_stats.enemies.instantiate()
+	
+	for new_enemy: Enemy in all_new_enemies.get_children():
+		var new_enemy_child := new_enemy.duplicate() as Enemy
+		add_child(new_enemy_child)
+	
+	all_new_enemies.queue_free()
+
+
 func reset_enemy_actions() -> void:
 	var enemy: Enemy
 	for child in get_children():
