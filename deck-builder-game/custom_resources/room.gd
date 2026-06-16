@@ -1,6 +1,7 @@
 class_name Room
 extends Resource
 
+# 房间的基本信息类
 enum	 Type {NOT_ASSIGNED, MONSTER, TREASURE, CAMPFIRE, SHOP, BOSS}
 
 @export var type: Type

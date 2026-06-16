@@ -1,6 +1,7 @@
 class_name MapRoom
 extends Area2D
 
+# 房间的可视化类
 signal selected(room: Room)
 
 const ICONS := {
