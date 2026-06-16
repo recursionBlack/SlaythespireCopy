@@ -74,12 +74,11 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hf5m5"]
 resource_name = "fade_out"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -158,7 +157,6 @@ process_material = SubResource("ParticleProcessMaterial_unswx")
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1163838340]
 
 [node name="UI" type="VBoxContainer" parent="UILayer" unique_id=230243263]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
