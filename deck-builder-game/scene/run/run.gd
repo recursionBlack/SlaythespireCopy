@@ -11,6 +11,7 @@ const TREASURE_SCENE := preload("res://scene/treasure/treasure.tscn")
 
 @onready var map: Map = $Map
 @onready var current_view: Node = $CurrentView
+@onready var health_ui: HealthUI = %HealthUI
 @onready var gold_ui: GoldUI = %GoldUI
 @onready var deck_btn: CardPileOpener = %DeckBtn
 @onready var deck_view: CardPileView = %DeckView
@@ -83,6 +84,8 @@ func _setup_event_connections() -> void:
 
 
 func _setup_top_bar()-> void:
+	character.stats_changed.connect(health_ui.update_stats.bind(character))
+	health_ui.update_stats(character)
 	gold_ui.run_stats = stats
 	deck_btn.card_pile = character.deck
 	deck_view.card_pile = character.deck
