@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://byaqg7e07m633"]
+
+[ext_resource type="Script" uid="uid://b4cvxfel1brhu" path="res://scene/status_handler/status_ui.gd" id="1_6p04p"]
+[ext_resource type="Texture2D" uid="uid://d0edy7thj8ce6" path="res://art/heart.png" id="1_f00wc"]
+[ext_resource type="Resource" uid="uid://ch6jh8ciyoyc4" path="res://status/true_strengh_form.tres" id="2_oowls"]
+
+[node name="StatusUI" type="Control" unique_id=702902887]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6p04p")
+status = ExtResource("2_oowls")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1239907539]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+texture = ExtResource("1_f00wc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Duration" type="Label" parent="." unique_id=811335378]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 16.0
+offset_bottom = 11.0
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stacks" type="Label" parent="." unique_id=1679230743]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 16.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
