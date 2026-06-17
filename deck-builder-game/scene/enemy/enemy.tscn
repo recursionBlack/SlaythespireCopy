@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_msiye"]
 [ext_resource type="PackedScene" uid="uid://dwmyos24v6u3s" path="res://scene/ui/stats_ui.tscn" id="3_tu2m7"]
 [ext_resource type="PackedScene" uid="uid://dcyhsifso4uo3" path="res://scene/ui/intent_ui.tscn" id="5_dd7y5"]
+[ext_resource type="PackedScene" uid="uid://cf8wuabbaafco" path="res://scene/status_handler/status_handler.tscn" id="6_u8b2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk444"]
 
@@ -31,6 +32,13 @@ offset_bottom = 23.0
 [node name="IntentUI" parent="." unique_id=1839823131 instance=ExtResource("5_dd7y5")]
 offset_top = -23.0
 offset_bottom = -9.0
+
+[node name="StatusHandler" parent="." unique_id=1733053107 node_paths=PackedStringArray("status_owner") instance=ExtResource("6_u8b2j")]
+offset_left = -24.0
+offset_top = 23.0
+offset_right = -9.0
+offset_bottom = 36.0
+status_owner = NodePath("..")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
