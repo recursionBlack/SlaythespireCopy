@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Status" format=3 uid="uid://bwtgqww18k384"]
+[gd_resource type="Resource" script_class="ExposedStatus" format=3 uid="uid://bwtgqww18k384"]
 
 [ext_resource type="Texture2D" uid="uid://s1vt588v27s6" path="res://art/expose.png" id="1_0jrlh"]
-[ext_resource type="Script" uid="uid://b0lpy4ckivb8" path="res://custom_resources/status.gd" id="1_e1u5d"]
+[ext_resource type="Script" uid="uid://t3esc84pjknl" path="res://status/exposed.gd" id="2_0jrlh"]
 
 [resource]
-script = ExtResource("1_e1u5d")
+script = ExtResource("2_0jrlh")
 id = "exposed"
 stack_type = 2
 can_expire = true
