@@ -8,6 +8,7 @@ const BASE_STYLEBOX := preload("uid://bd7cnl6r26ikp")
 const DRAG_STYLEBOX := preload("uid://g5h276x8d4d4")
 const HOVER_STYLEBOX := preload("uid://bpowp4huwkv4o")
 
+@export var player_modifiers: ModifierHandler
 @export var card: Card: set = _set_card
 @export var char_stats: CharacterStats: set = _set_char_stats
 
@@ -46,7 +47,7 @@ func play() -> void:
 	if not card:
 		return
 	
-	card.play(targets, char_stats)
+	card.play(targets, char_stats, player_modifiers)
 	queue_free()
 
 func _on_gui_input(event: InputEvent) -> void:

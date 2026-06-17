@@ -3,6 +3,7 @@ extends Status
 
 
 func initialize_status(target: Node) -> void:
+	print("muscle initialize_status")
 	status_changed.connect(_on_status_changed.bind(target))
 	_on_status_changed(target)
 
@@ -19,3 +20,4 @@ func _on_status_changed(target: Node) -> void:
 		muscle_modifier_value = ModifierValue.create_new_modifier("muscle", ModifierValue.Type.FLAT)
 	
 	muscle_modifier_value.flat_value = stacks
+	dmg_dealt_modifier.add_new_value(muscle_modifier_value)
