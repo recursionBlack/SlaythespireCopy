@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cf8wuabbaafco"]
+
+[ext_resource type="Script" uid="uid://ce70whvf5fotk" path="res://scene/status_handler/status_handler.gd" id="1_xiguo"]
+
+[node name="StatusHandler" type="GridContainer" unique_id=1733053107]
+custom_minimum_size = Vector2(15, 13)
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+script = ExtResource("1_xiguo")
