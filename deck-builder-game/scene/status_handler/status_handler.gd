@@ -57,7 +57,7 @@ func add_status(status: Status) -> void:
 
 
 func _has_status(id: String) -> bool:
-	for status_ui: StatsUI in get_children():
+	for status_ui: StatusUI in get_children():
 		if status_ui.status.id == id:
 			return true
 	
@@ -65,7 +65,7 @@ func _has_status(id: String) -> bool:
 
 
 func _get_status(id: String) -> Status:
-	for status_ui: StatsUI in get_children():
+	for status_ui: StatusUI in get_children():
 		if status_ui.status.id == id:
 			return status_ui.status
 	

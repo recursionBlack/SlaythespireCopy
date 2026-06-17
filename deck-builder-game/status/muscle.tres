@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Status" format=3 uid="uid://b8y76xcn8cnlm"]
+[gd_resource type="Resource" script_class="MyAwesomeStatus" format=3 uid="uid://b8y76xcn8cnlm"]
 
-[ext_resource type="Script" uid="uid://b0lpy4ckivb8" path="res://custom_resources/status.gd" id="1_g81sj"]
 [ext_resource type="Texture2D" uid="uid://bnspwxvtn7jgs" path="res://art/muscle.png" id="1_h8tfd"]
+[ext_resource type="Script" uid="uid://cp66r5jxlvpo5" path="res://status/muscle.gd" id="2_h8tfd"]
 
 [resource]
-script = ExtResource("1_g81sj")
+script = ExtResource("2_h8tfd")
 id = "muscle"
 type = 2
 stack_type = 1
