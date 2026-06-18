@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://dut18yf4akcki"]
 
+[ext_resource type="Script" uid="uid://ccjlg6iasafes" path="res://scene/relic_handler/relic_handler.gd" id="1_ddssi"]
 [ext_resource type="Texture2D" uid="uid://b5ux320nl4gx7" path="res://art/arrow_small.png" id="1_l6j1n"]
 [ext_resource type="Texture2D" uid="uid://dunsa2ckwk0nm" path="res://art/arrow_small_disabled.png" id="2_lo0qo"]
 [ext_resource type="PackedScene" uid="uid://dldrmohrkoe87" path="res://scene/relic_handler/relic_ui.tscn" id="3_ddssi"]
+[ext_resource type="Script" uid="uid://yogfw2akbwvv" path="res://scene/relic_handler/relic_control.gd" id="3_lo0qo"]
 
 [node name="RelicHandler" type="HBoxContainer" unique_id=382633740]
 offset_right = 120.0
 offset_bottom = 16.0
+script = ExtResource("1_ddssi")
 
 [node name="LeftBtn" type="TextureButton" parent="." unique_id=165366806]
 unique_name_in_owner = true
@@ -19,10 +22,13 @@ texture_disabled = ExtResource("2_lo0qo")
 stretch_mode = 5
 flip_h = true
 
-[node name="RelicControl" type="Control" parent="." unique_id=456202386]
+[node name="RelicControl" type="Control" parent="." unique_id=456202386 node_paths=PackedStringArray("left_btn", "right_btn")]
 clip_contents = true
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
+script = ExtResource("3_lo0qo")
+left_btn = NodePath("../LeftBtn")
+right_btn = NodePath("../RightBtn")
 
 [node name="Relics" type="HBoxContainer" parent="RelicControl" unique_id=1051170601]
 unique_name_in_owner = true
