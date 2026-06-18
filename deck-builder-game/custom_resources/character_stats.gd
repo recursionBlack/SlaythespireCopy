@@ -12,6 +12,7 @@ class_name CharacterStats
 @export var draftable_cards: CardPile
 @export var cards_per_turn: int
 @export var max_mana :int
+@export var starting_relic: Relic
 
 var mana: int :set = set_mana
 # 总卡组，弃牌堆，抽牌堆

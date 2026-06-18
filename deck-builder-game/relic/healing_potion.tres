@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Relic" format=3 uid="uid://b0bflm7km7c12"]
+
+[ext_resource type="Texture2D" uid="uid://boklhiqs1414d" path="res://art/tile_0115.png" id="1_4etm3"]
+[ext_resource type="Script" uid="uid://baaqpr80nmqu3" path="res://custom_resources/relic.gd" id="1_n53vd"]
+
+[resource]
+script = ExtResource("1_n53vd")
+relic_name = "Healing_potion"
+id = "healing_potion"
+type = 3
+character_type = 2
+starter_relic = true
+icon = ExtResource("1_4etm3")
+tooltip = "[color=\"ffdf00\"]Endless Healing Potion[/color]
+At the end of cambat, heal 6 HP"
+metadata/_custom_type_script = "uid://baaqpr80nmqu3"
