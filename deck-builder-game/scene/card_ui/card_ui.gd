@@ -1,5 +1,5 @@
-extends Control
 class_name CardUI
+extends Control
 
 # 拖拽卡片时，重新指定其父节点
 signal reparent_requested(which_card_ui: CardUI)
@@ -25,6 +25,7 @@ var playable := true: set = _set_playable
 # 当一个卡牌正在被拖动时，其他卡牌都要禁用，防止被交互
 var disabled := false
 
+
 func _ready() -> void:
 	Events.card_aim_started.connect(_on_card_drag_or_aiming_started)
 	Events.card_drag_started.connect(_on_card_drag_or_aiming_started)
@@ -49,6 +50,20 @@ func play() -> void:
 	
 	card.play(targets, char_stats, player_modifiers)
 	queue_free()
+
+
+func get_active_enemy_modifiers() -> ModifierHandler:
+	if targets.is_empty() or targets.size() > 1 or not targets[0] is Enemy:
+		return null
+	
+	return targets[0].modifier_handler
+
+
+func request_tooltip() -> void:
+	var enemy_modifier := get_active_enemy_modifiers()
+	var updated_tooltip := card.get_updated_tooltip(player_modifiers, enemy_modifier)
+	Events.card_tooltip_requested.emit(card.icon, updated_tooltip)
+
 
 func _on_gui_input(event: InputEvent) -> void:
 	card_state_machine.on_gui_input(event)
