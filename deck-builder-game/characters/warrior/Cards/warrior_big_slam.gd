@@ -16,6 +16,7 @@ func apply_effects(targets: Array[Node], modifiers: ModifierHandler) -> void:
 	# 施加状态效果
 	var status_effect = StatusEffect.new()
 	var exposed = EXPOSED_STATUS.duplicate()
+	exposed.initialize_status(targets[0])
 	exposed.duration = exposed_duration
 	status_effect.status = exposed
 	status_effect.execute(targets)
