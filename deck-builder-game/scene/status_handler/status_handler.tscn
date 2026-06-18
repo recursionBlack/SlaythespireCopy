@@ -4,7 +4,10 @@
 
 [node name="StatusHandler" type="GridContainer" unique_id=1733053107]
 custom_minimum_size = Vector2(15, 13)
+mouse_filter = 0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 6
 script = ExtResource("1_xiguo")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

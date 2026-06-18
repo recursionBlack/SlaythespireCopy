@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dhhoyf88sau6r"]
+
+[ext_resource type="Script" uid="uid://ghfmxdqfjqyq" path="res://scene/ui/status_view.gd" id="1_n2v6q"]
+
+[node name="StatusView" type="Control" unique_id=1044772595]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n2v6q")
+
+[node name="Background" type="ColorRect" parent="." unique_id=176609400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6627451)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1057528131]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer" unique_id=73095561]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StatusTooltips" type="VBoxContainer" parent="ScrollContainer/CenterContainer" unique_id=1026652011]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BackBtn" type="Button" parent="." unique_id=2079906833]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -58.0
+offset_top = 7.0
+offset_right = -8.0
+offset_bottom = 22.0
+grow_horizontal = 0
+text = "Back"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

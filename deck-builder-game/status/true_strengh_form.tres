@@ -7,5 +7,5 @@
 script = ExtResource("2_1sh8j")
 id = "true_strengh_form"
 icon = ExtResource("1_1sh8j")
-tooltip = "TODO:"
+tooltip = "True Strength Form: at the start of its turn. gain 2 Muscle"
 metadata/_custom_type_script = "uid://b0lpy4ckivb8"
