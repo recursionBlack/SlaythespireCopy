@@ -22,7 +22,7 @@ texture = ExtResource("1_ss0y8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Number" type="Label" parent="." unique_id=425266201]
+[node name="Label" type="Label" parent="." unique_id=425266201]
 layout_mode = 2
 size_flags_vertical = 1
 text = "7"

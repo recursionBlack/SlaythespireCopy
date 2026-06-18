@@ -20,7 +20,7 @@ enum StackType {NONE, INTENSITY, DURATION}
 @export_multiline var tooltip: String
 
 
-func initiate_status(_target: Node) -> void:
+func initialize_status(_target: Node) -> void:
 	pass
 
 
