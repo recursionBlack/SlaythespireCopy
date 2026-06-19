@@ -7,7 +7,6 @@
 script = ExtResource("2_xn1v1")
 relic_name = "Explosive_barrel"
 id = "explosive_barrel"
-starter_relic = true
 icon = ExtResource("1_xn1v1")
 tooltip = "[color=\"ffdf00\"]Exposive Barrel[/color]
 At the start  of your turn, deal 2 damage to all enemies"

@@ -8,7 +8,6 @@ script = ExtResource("2_l4ihv")
 relic_name = "Mana_potion"
 id = "mana_potion"
 type = 1
-starter_relic = true
 icon = ExtResource("1_l4ihv")
 tooltip = "[color=\"ffdf00\"]Rechargable Mana Potion[/color]
 At the start of combat, gain 1 mana"

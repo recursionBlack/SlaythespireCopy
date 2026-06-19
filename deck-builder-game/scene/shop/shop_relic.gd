@@ -41,7 +41,7 @@ func set_relic(new_relic: Relic) -> void:
 
 
 func _on_buy_btn_pressed() -> void:
-	Events.shop_card_bought.emit(relic, gold_cost)
+	Events.shop_relic_bought.emit(relic, gold_cost)
 	relic_container.queue_free()
 	price.queue_free()
 	buy_btn.queue_free()

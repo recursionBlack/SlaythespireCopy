@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c1qkw4x1135n4" path="res://scene/shop/shop.gd" id="1_jdi50"]
 [ext_resource type="Texture2D" uid="uid://bj3im6egs4wxx" path="res://art/tile_0086.png" id="2_mq6bq"]
+[ext_resource type="Script" uid="uid://baaqpr80nmqu3" path="res://custom_resources/relic.gd" id="2_qvagu"]
 [ext_resource type="Texture2D" uid="uid://dbfgvt2kbwx2o" path="res://art/shopkeeper_blink.png" id="3_at5no"]
 [ext_resource type="PackedScene" uid="uid://bvkxejvahnwok" path="res://scene/shop/shop_card.tscn" id="4_at5no"]
+[ext_resource type="Resource" uid="uid://ceoycr2jnml4a" path="res://relic/mana_potion.tres" id="4_grq32"]
 [ext_resource type="PackedScene" uid="uid://d4erv5bn7fonh" path="res://scene/ui/card_tooltip_popup.tscn" id="5_04gn0"]
 [ext_resource type="PackedScene" uid="uid://d2pwi8xyjug66" path="res://scene/shop/shop_relic.tscn" id="5_5m514"]
+[ext_resource type="Resource" uid="uid://vsoprppk10it" path="res://relic/reinforced_armor.tres" id="5_xnav0"]
+[ext_resource type="Resource" uid="uid://bcja2ifww6kgm" path="res://relic/coupons.tres" id="6_22mpj"]
+[ext_resource type="PackedScene" uid="uid://t86t4xo6lgnm" path="res://scene/modifier_handler/modifier_handler.tscn" id="12_grq32"]
+[ext_resource type="PackedScene" uid="uid://olhxi47d4rvm" path="res://scene/modifier_handler/modifier.tscn" id="13_xnav0"]
 
 [sub_resource type="Gradient" id="Gradient_hf5m5"]
 offsets = PackedFloat32Array(0.20704846, 1)
@@ -67,6 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jdi50")
+shop_relics = Array[ExtResource("2_qvagu")]([ExtResource("6_22mpj"), ExtResource("4_grq32"), ExtResource("5_xnav0")])
 
 [node name="BackGroundLayer" type="CanvasLayer" parent="." unique_id=34300489]
 layer = 0
@@ -176,5 +183,10 @@ layout_mode = 2
 [node name="CardTooltipPopup" parent="UILayer" unique_id=1549993732 instance=ExtResource("5_04gn0")]
 unique_name_in_owner = true
 visible = false
+
+[node name="ModifierHandler" parent="." unique_id=872986526 instance=ExtResource("12_grq32")]
+
+[node name="ShopCostModifier" parent="ModifierHandler" unique_id=1109124127 instance=ExtResource("13_xnav0")]
+type = 3
 
 [connection signal="pressed" from="UILayer/BackBtn" to="." method="_on_back_btn_pressed"]
