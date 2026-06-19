@@ -22,7 +22,8 @@ func _ready() -> void:
 	
 	# 删除测试时的占位符遗物
 	for relic_ui: RelicUI in relics.get_children():
-		relic_ui.queue_free()	# FIX ME
+		# 准备阶段时，占位符要用free立即清理掉，不要用queue_free
+		relic_ui.free()
 	
 	relics.child_order_changed.connect(_on_relics_child_order_changed)
 

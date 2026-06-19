@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://t0ng1et4gvhc" path="res://scene/ui/gold_ui.tscn" id="4_8lj5q"]
 [ext_resource type="PackedScene" uid="uid://q7th6jklyb2y" path="res://scene/ui/card_pile_opener.tscn" id="4_jl7ou"]
 [ext_resource type="Texture2D" uid="uid://barletlddvms8" path="res://art/deck.png" id="5_te63u"]
+[ext_resource type="PackedScene" uid="uid://dut18yf4akcki" path="res://scene/relic_handler/relic_handler.tscn" id="6_p36vy"]
 [ext_resource type="PackedScene" uid="uid://cm2wpyuo5ic7w" path="res://scene/ui/card_pile_view.tscn" id="6_te63u"]
 
 [node name="Run" type="Node" unique_id=1416644894]
@@ -78,9 +79,14 @@ show_max_hp = true
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Placeholder" type="Control" parent="TopBar/BarItems" unique_id=2031898730]
+[node name="RelicHandlerContainer" type="CenterContainer" parent="TopBar/BarItems" unique_id=54632005]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="RelicHandler" parent="TopBar/BarItems/RelicHandlerContainer" unique_id=382633740 instance=ExtResource("6_p36vy")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
 
 [node name="DeckBtn" parent="TopBar/BarItems" unique_id=1086308784 node_paths=PackedStringArray("counter") instance=ExtResource("4_jl7ou")]
 unique_name_in_owner = true
