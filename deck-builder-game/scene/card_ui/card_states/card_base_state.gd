@@ -1,5 +1,6 @@
 extends CardState
 
+var mouse_over_card := false
 
 func enter() -> void:
 	# 所有子节点准备完成后，才会准备根节点，所以要等待根节点准备完成
@@ -20,13 +21,15 @@ func on_gui_input(_event: InputEvent) -> void:
 	if not card_ui.playable or card_ui.disabled:
 		return
 	
-	if _event.is_action_pressed("left_mouse"):
+	if mouse_over_card and _event.is_action_pressed("left_mouse"):
 		# 将卡牌跟随鼠标的位置设置为鼠标点击时在卡牌的位置，而非卡牌的左上角
 		card_ui.pivot_offset = card_ui.get_global_mouse_position() - card_ui.global_position
 		transition_requested.emit(self, CardState.State.CLICKED)
 
 
 func on_mouse_entered() -> void:
+	mouse_over_card = true
+	
 	if not card_ui.playable or card_ui.disabled:
 		return
 	
@@ -35,6 +38,8 @@ func on_mouse_entered() -> void:
 
 
 func on_mouse_exited() -> void:
+	mouse_over_card = false
+	
 	if not card_ui.playable or card_ui.disabled:
 		return
 	

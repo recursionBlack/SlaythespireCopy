@@ -1,12 +1,13 @@
 extends Panel
 class_name BattleOverPanel
 
+const MAIN_MENU = "res://scene/ui/main_menu.tscn"
 
 enum Type {WIN, LOSE}
 
 @onready var label: Label = %Label
 @onready var continue_btn: Button = %ContinueBtn
-@onready var restart_btn: Button = %RestartBtn
+@onready var main_menu_btn: Button = %MainMenuBtn
 
 
 func _ready() -> void:
@@ -14,13 +15,13 @@ func _ready() -> void:
 		func():
 			Events.battle_won.emit()
 	)
-	restart_btn.pressed.connect(get_tree().reload_current_scene)
+	main_menu_btn.pressed.connect(get_tree().change_scene_to_file.bind(MAIN_MENU))
 	Events.battle_over_screen_requested.connect(show_screen)
 
 
 func show_screen(text: String, type: Type) -> void:
 	label.text = text
 	continue_btn.visible = type == Type.WIN
-	restart_btn.visible = type == Type.LOSE
+	main_menu_btn.visible = type == Type.LOSE
 	show()
 	get_tree().paused = true

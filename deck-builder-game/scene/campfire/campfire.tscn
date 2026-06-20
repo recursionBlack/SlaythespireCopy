@@ -179,6 +179,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="RestBtn" type="Button" parent="UILayer/UI" unique_id=237409601]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 14)
 layout_mode = 2
 size_flags_horizontal = 4

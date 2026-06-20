@@ -47,9 +47,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Awesome!"
 
-[node name="RestartBtn" type="Button" parent="VBoxContainer" unique_id=2051599249]
+[node name="MainMenuBtn" type="Button" parent="VBoxContainer" unique_id=2051599249]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 16)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Restart"
+text = "Main Menu"

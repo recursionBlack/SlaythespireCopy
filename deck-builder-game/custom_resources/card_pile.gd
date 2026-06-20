@@ -32,6 +32,26 @@ func clear() -> void:
 	card_pile_size_changed.emit(cards.size())
 
 
+# We need this method because of a Godot issue
+# reported here:
+# https://github.com/godotengine/godot/issues/74918
+func duplicate_cards() -> Array[Card]:
+	var new_array: Array[Card] = []
+	
+	for card: Card in cards:
+		new_array.append(card.duplicate())
+	
+	return new_array
+
+
+# 自己手动实现深拷贝，以避免godot引擎，目前对数组中，
+# 仅对数组本身深拷贝，但对数组元素浅拷贝的问题
+func custom_duplicate() -> CardPile:
+	var new_card_pile := CardPile.new()
+	new_card_pile.cards = duplicate_cards()
+	
+	return new_card_pile
+
 func _to_string() -> String:
 	var _card_strings: PackedStringArray = []
 	for i in range(cards.size()):

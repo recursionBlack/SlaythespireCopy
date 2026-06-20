@@ -24,10 +24,11 @@ var character: CharacterStats
 func _ready() -> void:
 	Events.card_played.connect(_on_card_played)
 
+
 func start_battle(char_stats: CharacterStats) -> void:
 	character = char_stats
 	# 战斗开始时，初始化抽牌堆，洗牌，初始化弃牌堆
-	character.draw_pile = character.deck.duplicate(true)
+	character.draw_pile = character.deck.custom_duplicate()
 	character.draw_pile.shuffle()
 	character.discard = CardPile.new()
 	relics.relics_activated.connect(_on_relics_activated)

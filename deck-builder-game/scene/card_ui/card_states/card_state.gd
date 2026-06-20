@@ -14,6 +14,10 @@ func enter() -> void:
 	pass
 
 
+func post_enter() -> void:
+	pass
+
+
 func exit() -> void:
 	pass
 
