@@ -6,6 +6,7 @@ const BATTLE_REWARD_SCENE := preload("res://scene/battle_rewards/battle_rewards.
 const CAMPFIRE_SCENE := preload("res://scene/campfire/campfire.tscn")
 const SHOP_SCENE := preload("res://scene/shop/shop.tscn")
 const TREASURE_SCENE := preload("res://scene/treasure/treasure.tscn")
+const WIN_SCREEN_SCENE := preload("res://scene/win_screen/win_screen.tscn")
 
 @export var run_startup: RunStartup
 
@@ -39,6 +40,11 @@ func _ready() -> void:
 			_start_run()
 		RunStartup.Type.CONTINUE_RUN:
 			print("TODO: load previous Run")
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("cheat"):
+		get_tree().call_group("enemies", "queue_free")
 
 
 func _start_run() -> void:
@@ -98,6 +104,15 @@ func _setup_top_bar()-> void:
 	deck_btn.pressed.connect(deck_view.show_current_view.bind("Deck"))
 
 
+func _show_regular_battle_rewards() -> void:
+	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
+	reward_scene.run_stats = stats
+	reward_scene.character_stats = character
+	
+	reward_scene.add_gold_reward(map.last_room.battle_stats.roll_gold_reward())
+	reward_scene.add_card_reward()
+
+
 func _on_battle_room_entered(room: Room) -> void:
 	var battle_scene: Battle = _change_view(BATTLE_SCENE)
 	battle_scene.char_stats = character
@@ -137,12 +152,11 @@ func _on_shop_entered() -> void:
 
 
 func _on_battle_won() -> void:
-	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
-	reward_scene.run_stats = stats
-	reward_scene.character_stats = character
-	
-	reward_scene.add_gold_reward(map.last_room.battle_stats.roll_gold_reward())
-	reward_scene.add_card_reward()
+	if map.floors_climbed == MapGenerator.FLOORS:
+		var win_screen := _change_view(WIN_SCREEN_SCENE) as WinScreen
+		win_screen.character = character
+	else:
+		_show_regular_battle_rewards()
 
 
 func _on_map_exited(room: Room) -> void:
