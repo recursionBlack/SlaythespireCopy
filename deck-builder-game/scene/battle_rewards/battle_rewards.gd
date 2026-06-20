@@ -71,7 +71,7 @@ func _show_card_rewards() -> void:
 	
 	for i in run_stats.card_rewards:
 		_setup_card_chances()
-		var roll := randf_range(0.0, card_reward_total_weight)
+		var roll := RNG.instance.randf_range(0.0, card_reward_total_weight)
 		
 		for rarity: Card.Rarity in card_rarity_weights:
 			if card_rarity_weights[rarity] > roll:
@@ -108,7 +108,7 @@ func _get_random_available_card(available_cards: Array[Card], with_rarity: Card.
 			return card.rarity == with_rarity
 	)
 	
-	return all_possible_cards.pick_random()
+	return RNG.array_pick_random(all_possible_cards)
 
 
 func _on_card_reward_taken(card: Card) -> void:

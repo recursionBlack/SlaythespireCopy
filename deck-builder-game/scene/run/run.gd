@@ -69,6 +69,8 @@ func _start_run() -> void:
 
 
 func _save_run(was_on_map: bool) -> void:
+	save_data.rng_seed = RNG.instance.seed
+	save_data.rng_state = RNG.instance.state
 	save_data.run_stats = stats
 	save_data.char_stats = character
 	save_data.current_deck = character.deck
@@ -85,6 +87,7 @@ func _load_run() -> void:
 	save_data = SaveGame.load_data()
 	assert(save_data, "Couldn't load last save")
 	
+	RNG.set_from_save_data(save_data.rng_seed, save_data.rng_state)
 	stats = save_data.run_stats
 	character = save_data.char_stats
 	character.deck = save_data.current_deck

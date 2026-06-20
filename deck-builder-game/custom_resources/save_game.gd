@@ -3,6 +3,8 @@ extends Resource
 
 const SAVE_PATH := "user://savegame.tres"
 
+@export var rng_seed: int
+@export var rng_state: int
 @export var run_stats: RunStats
 @export var char_stats: CharacterStats
 # 只有导出变量才能被导出，下面这俩，是CharacterStats的成员变量

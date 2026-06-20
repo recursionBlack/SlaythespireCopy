@@ -24,7 +24,7 @@ func add_card(card: Card):
 
 # 洗牌
 func shuffle() -> void:
-	cards.shuffle()
+	RNG.array_shuffle(cards)
 
 
 func clear() -> void:
