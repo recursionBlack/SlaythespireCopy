@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dut18yf4akcki" path="res://scene/relic_handler/relic_handler.tscn" id="6_p36vy"]
 [ext_resource type="PackedScene" uid="uid://cm2wpyuo5ic7w" path="res://scene/ui/card_pile_view.tscn" id="6_te63u"]
 [ext_resource type="PackedScene" uid="uid://ba4635mcwvxb2" path="res://scene/relic_handler/relic_tooltip.tscn" id="10_5nlkx"]
+[ext_resource type="Script" uid="uid://bqb210gjw1h0j" path="res://scene/run/pause_menu.gd" id="11_0buch"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bikea"]
 
 [node name="Run" type="Node" unique_id=1416644894]
 script = ExtResource("1_2vrtk")
@@ -20,6 +23,7 @@ run_startup = ExtResource("2_xx2sb")
 [node name="CurrentView" type="Node" parent="." unique_id=601661662]
 
 [node name="DebugBtns" type="VBoxContainer" parent="." unique_id=652208065]
+visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
@@ -113,3 +117,54 @@ visible = false
 [node name="RelicTooltip" parent="TopBar" unique_id=1549993732 instance=ExtResource("10_5nlkx")]
 unique_name_in_owner = true
 visible = false
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=708778483]
+process_mode = 3
+layer = 5
+visible = false
+script = ExtResource("11_0buch")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=82385188]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1436009064]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -20.0
+offset_right = 48.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer" unique_id=1146958041]
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_bikea")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/VBoxContainer" unique_id=195225284]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BackToGameBtn" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer" unique_id=1763817775]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 14)
+layout_mode = 2
+text = "Back Game"
+
+[node name="SaveAndQuitBtn" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer" unique_id=1256054483]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Main Menu"
