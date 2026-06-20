@@ -1,6 +1,9 @@
 extends Control
 
 const CHAR_SELECTOR_SCENE := preload("res://scene/ui/character_selector.tscn")
+const RUN_SCENE = preload("res://scene/run/run.tscn")
+
+@export var run_startup: RunStartup
 
 @onready var continue_btn: Button = %Continue
 @onready var new_run: Button = $VBoxContainer/NewRun
@@ -9,10 +12,12 @@ const CHAR_SELECTOR_SCENE := preload("res://scene/ui/character_selector.tscn")
 func _ready() -> void:
 	# 战斗结束面板会将paused设为true
 	get_tree().paused = false
+	continue_btn.disabled = SaveGame.load_data() == null
 
 
 func _on_continue_pressed() -> void:
-	print("Continue Run")
+	run_startup.type = RunStartup.Type.CONTINUE_RUN
+	get_tree().change_scene_to_packed(RUN_SCENE)
 
 
 func _on_new_run_pressed() -> void:

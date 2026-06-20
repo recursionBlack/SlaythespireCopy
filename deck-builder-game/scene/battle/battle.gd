@@ -49,6 +49,7 @@ func _on_enemy_turn_ended() -> void:
 func _on_player_died() -> void:
 	print("Game Over!")
 	Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)
+	SaveGame.delete_data()
 
 
 func _on_relic_activated(type: Relic.Type) -> void:
