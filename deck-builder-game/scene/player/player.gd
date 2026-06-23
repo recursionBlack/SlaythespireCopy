@@ -1,5 +1,5 @@
-extends Node2D
 class_name Player
+extends Node2D
 
 const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 

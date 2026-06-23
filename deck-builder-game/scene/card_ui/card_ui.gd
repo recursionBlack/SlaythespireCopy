@@ -4,9 +4,9 @@ extends Control
 # 拖拽卡片时，重新指定其父节点
 signal reparent_requested(which_card_ui: CardUI)
 
-const BASE_STYLEBOX := preload("uid://bd7cnl6r26ikp")
-const DRAG_STYLEBOX := preload("uid://g5h276x8d4d4")
-const HOVER_STYLEBOX := preload("uid://bpowp4huwkv4o")
+const BASE_STYLEBOX := preload("res://scene/card_ui/card_base_stylebox.tres")
+const DRAG_STYLEBOX := preload("res://scene/card_ui/card_dragging_stylebox.tres")
+const HOVER_STYLEBOX := preload("res://scene/card_ui/card_hover_styleboxt.tres")
 
 @export var player_modifiers: ModifierHandler
 @export var card: Card: set = _set_card

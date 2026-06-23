@@ -1,5 +1,5 @@
-extends Resource
 class_name Stats
+extends Resource
 
 signal stats_changed
 
